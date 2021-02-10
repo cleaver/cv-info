@@ -1,0 +1,24 @@
+{
+  "name": "cv-info",
+  "author": "Cleaver Barnes",
+  "license": "GPL2",
+  "version": "0.0.1",
+  "scripts": {
+    "develop": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body": "^5.1.0",
+    "dotenv-cli": "^4.0.0",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.19.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1"
+  }
+}
