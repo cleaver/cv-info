@@ -21,28 +21,21 @@ const server = http.createServer(async (req, res) => {
   // Handle POST /api/user
   if (parsedUrl.pathname === '/api/login' && req.method === 'POST') {
     const jsonBodyPromise = util.promisify(jsonBody);
-    jsonBodyPromise(req).then(({ username, password }) => {
-      if (!username || !password) {
-        res.statusCode = 400;
+    jsonBodyPromise(req)
+      .then(loginHandler)
+      .then((jwt) => {
+        res.statusCode = 200;
         res.end(
           JSON.stringify({
-            error: 'Both username and password parameters are required.',
+            message: "Here's your new token.",
+            token: jwt,
           })
         );
-      } else {
-        loginHandler(username, password).then((jwt) => {
-          if (jwt) {
-            res.statusCode = 200;
-            res.end(
-              JSON.stringify({ message: "Here's your new token.", token: jwt })
-            );
-          } else {
-            res.statusCode = 403;
-            res.end(JSON.stringify({ error: 'Not authorized.' }));
-          }
-        });
-      }
-    });
+      })
+      .catch((err) => {
+        res.statusCode = 403;
+        res.end(JSON.stringify({ error: err.message }));
+      });
   }
 
   //handle GET /api/cvinfo/{id}
