@@ -1,7 +1,7 @@
 {
   "name": "cv-info",
   "author": "Cleaver Barnes",
-  "license": "GPL2",
+  "license": "GPL-2.0-only",
   "version": "0.0.1",
   "scripts": {
     "develop": "nodemon src/server.js"
