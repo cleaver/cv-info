@@ -17,9 +17,21 @@ if (dotenv.error) {
 }
 const server = http.createServer(async (req, res) => {
   const parsedUrl = url.parse(req.url, true);
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Access-Control-Allow-Origin', process.env.ALLOW_ORIGIN_HEADER);
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+
+  if (req.method === 'OPTIONS') {
+    res.statusCode = 200;
+    res.end('');
+  }
 
   // Handle POST /api/user
-  if (parsedUrl.pathname === '/api/login' && req.method === 'POST') {
+  else if (parsedUrl.pathname === '/api/login' && req.method === 'POST') {
     const jsonBodyPromise = util.promisify(jsonBody);
     jsonBodyPromise(req)
       .then(loginHandler)
@@ -59,7 +71,6 @@ const server = http.createServer(async (req, res) => {
           res.end(JSON.stringify({ data: data }));
         })
         .catch((err) => {
-          console.log(err.constructor.name);
           if (err instanceof AuthError) {
             res.statusCode = 403;
             res.end(JSON.stringify({ error: err.message }));
