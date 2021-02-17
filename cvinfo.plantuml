@@ -1,0 +1,11 @@
+@startuml cv-info
+participant cvinfo as cvinfo
+participant "/api/cvinfo" as api
+participant login as login
+cvinfo -> api : request content
+api -> cvinfo : 403
+cvinfo -> login : send credentials
+login -> cvinfo : JWT
+cvinfo -> api : request content
+api -> cvinfo : content
+@enduml
