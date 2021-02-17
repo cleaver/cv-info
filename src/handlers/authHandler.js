@@ -10,8 +10,9 @@ module.exports = (token) => {
       const { username } = jwt.verify(token, JWT_KEY);
       if (username === process.env.AUTH_USERNAME) {
         resolve(username);
+      } else {
+        reject(new AuthError('not authorized'));
       }
-      reject(new AuthError('not authorized'));
     } catch (error) {
       reject(new AuthError('not authorized'));
     }
