@@ -17,9 +17,9 @@ a JWT. A valid JWT is required to access the `cv-info` endpoint.
 
 ## Implementation
 
-This implementation is intentially simple. No Express or other frameworks.
-There is a basic `server.js` to route the requests. All HTTP details are
-managed here. The resource handlers (`user.js` and `cvinfo.js`) are not HTTP
+This implementation is intentially simple. Neither Express nor other frameworks
+are used. There is a basic `server.js` to route the requests. All HTTP details
+are managed here. The resource handlers (`user.js` and `cvinfo.js`) are not HTTP
 aware. This is so they could be called from  API Gateway as an AWS Lambda, or
 similar. There's no database, although it could easily be added.
 
@@ -70,3 +70,20 @@ curl --location --request GET 'http://localhost:3000/api/cvinfo/sample' \
 --header 'Authorization: __YOUR_JWT__'
 ```
 
+### Generate new password
+
+From the project directory, you can run `node` to open a CLI. In the CLI, type
+the following:
+
+```javascript
+const bcrypt = require('bcrypt');
+bcrypt.hash('your-new-password',10).then((hash)=>{console.log(hash)});
+```
+
+The new password hash will be displayed. Copy this to your `.env` file.
+
+## Security
+
+This application is not recommended for protecting important secrets. Use it to
+better understand how you could use JWT for API auth. If you are planning your
+own application, look for a proven and tested auth framework.
