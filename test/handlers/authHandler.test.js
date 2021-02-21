@@ -5,7 +5,6 @@ jest.mock('jsonwebtoken');
 
 describe('authHandler tests', () => {
   process.env.AUTH_USERNAME = 'foo';
-  beforeEach(() => {});
 
   test('valid token, good username', () => {
     jwt.verify.mockReturnValue({ username: 'foo' });
