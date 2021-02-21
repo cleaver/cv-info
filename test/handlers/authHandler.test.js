@@ -13,13 +13,13 @@ describe('authHandler tests', () => {
 
   test('valid token, bad username', () => {
     jwt.verify.mockReturnValue({ username: 'bar' });
-    expect(authHandler('valid')).rejects.toMatch('error');
+    expect(authHandler('valid')).rejects.toThrow('not authorized');
   });
 
   test('invalid token', () => {
     jwt.verify.mockImplementation((scalar) => {
       throw new Error();
     });
-    expect(authHandler('invalid')).rejects.toMatch('error');
+    expect(authHandler('invalid')).rejects.toThrow('not authorized');
   });
 });
