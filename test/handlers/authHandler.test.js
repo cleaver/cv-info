@@ -13,7 +13,6 @@ describe('authHandler tests', () => {
 
   test('valid token, bad username', () => {
     jwt.verify.mockReturnValue({ username: 'bar' });
-    console.log('AUTH_USERNAME', process.env.AUTH_USERNAME);
     expect(authHandler('valid')).rejects.toMatch('error');
   });
 
