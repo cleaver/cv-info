@@ -15,8 +15,11 @@ const loginHandler = require('./handlers/loginHandler');
 if (dotenv.error) {
   throw dotenv.error;
 }
+
 const server = http.createServer(async (req, res) => {
   const parsedUrl = url.parse(req.url, true);
+
+  // Set headers
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Access-Control-Allow-Origin', process.env.ALLOW_ORIGIN_HEADER);
   res.setHeader(
@@ -25,6 +28,7 @@ const server = http.createServer(async (req, res) => {
   );
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
 
+  // Handle OPTIONS request
   if (req.method === 'OPTIONS') {
     res.statusCode = 200;
     res.end('');
@@ -81,6 +85,7 @@ const server = http.createServer(async (req, res) => {
         });
     }
   } else {
+    // Handle any other endpoint
     res.statusCode = 404;
     res.end('Endpoint not found.');
   }
