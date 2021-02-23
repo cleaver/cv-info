@@ -1,5 +1,7 @@
 # CV-Info
 
+[![Tests](https://github.com/cleaver/cv-info/actions/workflows/nodejs-ci.yaml/badge.svg)](https://github.com/cleaver/cv-info/actions/workflows/nodejs-ci.yaml)
+
 A basic Node.js REST application to protect information on a static site.
 
 This application is intended for use with a static site using a framework
