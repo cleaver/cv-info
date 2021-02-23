@@ -89,3 +89,8 @@ The new password hash will be displayed. Copy this to your `.env` file.
 This application is not recommended for protecting important secrets. Use it to
 better understand how you could use JWT for API auth. If you are planning your
 own application, look for a proven and tested auth framework.
+
+## Tests
+
+Currently, there are only tests on the business logic in `src/handlers` which do 
+the main work. There are no tests on the HTTP logic.
