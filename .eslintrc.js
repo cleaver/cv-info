@@ -4,7 +4,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['airbnb', 'prettier', 'prettier/react'],
+  extends: ['airbnb-base/legacy', 'prettier'],
   parserOptions: {
     ecmaVersion: 12,
     sourceType: 'module',
@@ -12,12 +12,7 @@ module.exports = {
   },
   plugins: ['prettier'],
   rules: {
-    'react/prop-types': 'off',
-    'react/no-danger': 'off',
     'prettier/prettier': ['error'],
-    'react/jsx-filename-extension': [
-      2,
-      { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
-    ],
+    strict: 'error',
   },
 };
