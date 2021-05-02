@@ -10,6 +10,9 @@
 .env
 .env.*
 
+# deployment
+deploy.sh
+
 # content
 /content
 
