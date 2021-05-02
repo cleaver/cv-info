@@ -5,6 +5,7 @@
   "version": "0.0.1",
   "scripts": {
     "develop": "nodemon src/server.js",
+    "eslint": "eslint",
     "test": "jest",
     "test-coverage": "jest --coverage"
   },
@@ -12,11 +13,11 @@
     "bcrypt": "^5.0.0",
     "body": "^5.1.0",
     "dotenv-cli": "^4.0.0",
+    "eslint-config-airbnb-base": "^14.2.1",
     "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "eslint": "^7.19.0",
-    "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.3.1",

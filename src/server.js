@@ -54,7 +54,7 @@ const server = http.createServer(async (req, res) => {
       });
   }
 
-  //handle GET /api/cvinfo/{id}
+  // handle GET /api/cvinfo/{id}
   else if (
     parsedUrl.pathname.startsWith('/api/cvinfo') &&
     req.method === 'GET'
@@ -67,7 +67,7 @@ const server = http.createServer(async (req, res) => {
       res.end(JSON.stringify({ error: 'Invalid ID.' }));
     } else {
       authHandler(req.headers.authorization)
-        .then((username) => {
+        .then(() => {
           return cvinfoHandler(id);
         })
         .then((data) => {
