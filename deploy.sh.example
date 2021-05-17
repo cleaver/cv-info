@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Replace `user@example.com:appdir` with your destination.
+rsync -e ssh -av --exclude=".git*" --exclude=.env --exclude=node_modules --exclude=coverage --exclude=deploy.sh --no-group . user@example.com:appdir
