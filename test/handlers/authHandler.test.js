@@ -17,7 +17,7 @@ describe('authHandler tests', () => {
   });
 
   test('invalid token', () => {
-    jwt.verify.mockImplementation((scalar) => {
+    jwt.verify.mockImplementation(() => {
       throw new Error();
     });
     expect(authHandler('invalid')).rejects.toThrow('not authorized');
